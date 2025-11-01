@@ -1,36 +1,174 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Template for Portfolio Website
+
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. This portfolio is fully customizable through a single configuration file, making it easy to personalize with your information.
+
+## Features
+
+- 🎨 **Modern Design** - Clean, professional, and visually appealing UI
+- 📱 **Fully Responsive** - Works seamlessly on all devices
+- ⚡ **Performance Optimized** - Built with Next.js 14 for optimal performance
+- 🎯 **Recruiter Friendly** - Clear sections for experience, skills, and GitHub profile
+- ✨ **Smooth Animations** - Engaging animations using Framer Motion
+- 🚀 **Easy Deployment** - Ready to deploy on Vercel with zero configuration
+- ⚙️ **Fully Configurable** - Single configuration file controls everything
+
+## Tech Stack
+
+- **Framework:** Next.js 14
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Content:** React Markdown
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18.17 or later
+- npm, yarn, or pnpm
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repo-url>
+cd dev-portfolio-template
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quick Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**All customization happens in `data/personalInfo.ts`** - Update this single file with your information:
 
-## Learn More
+### 1. Personal Information
+```typescript
+export const personalInfo = {
+  name: 'Your Name',
+  title: 'Your Title',
+  bio: 'Your bio...',
+  socialLinks: {
+    github: 'https://github.com/yourusername',
+    linkedin: 'https://linkedin.com/in/yourprofile',
+    email: 'your.email@example.com',
+  },
+  location: 'Your City, Country',
+  resume: {
+    filename: 'YourResume.pdf',
+    displayName: 'YourResume.pdf',
+  },
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Work Experience
+```typescript
+export const experiences = [
+  {
+    company: 'Company Name',
+    logo: '/logos/company-logo.png', // Optional
+    location: 'City, Country',
+    positions: [
+      {
+        title: 'Senior Software Engineer',
+        period: '2023 - Present',
+        description: `#### Project Name
+- Achievement 1
+- Achievement 2
+- Achievement 3`,
+      },
+      // Add more positions for promotions
+    ],
+  },
+  // Add more companies
+]
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Skills
+```typescript
+export const skills = {
+  frontend: ['React', 'Next.js', 'TypeScript'],
+  backend: ['Java', 'Spring Boot', 'Python'],
+  ai: ['GPT Integration', 'LLM APIs', 'Prompt Engineering'],
+  tools: ['Git', 'Docker', 'AWS', 'Kubernetes'],
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. GitHub Profile
+```typescript
+export const githubUsername = 'your-github-username'
+```
 
-## Deploy on Vercel
+### 5. Projects (Optional)
+```typescript
+export const projects = [
+  {
+    title: 'Project Name',
+    description: 'Project description',
+    image: '/images/project.png', // Optional
+    technologies: ['React', 'Next.js'],
+    githubUrl: 'https://github.com/username/project', // Optional
+    liveUrl: 'https://project-demo.com', // Optional
+    featured: true, // Optional
+  },
+]
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 6. Navigation Configuration
+```typescript
+export const navigationConfig = {
+  order: ['home', 'about', 'experience', 'projects', 'skills', 'github', 'contact'],
+  labels: {
+    home: 'Home',
+    about: 'About',
+    experience: 'Experience',
+    projects: 'Projects',
+    skills: 'Skills',
+    github: 'GitHub',
+    contact: 'Contact',
+  },
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Assets
+
+Place your files in the `public` folder:
+- Resume PDF: `public/YourResume.pdf`
+- Company logos: `public/logos/`
+- Project images: `public/images/`
+
+## Deployment
+
+### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Import your repository in [Vercel](https://vercel.com)
+3. Vercel will automatically detect Next.js and configure the build settings
+4. Click "Deploy" and your site will be live!
+
+### Alternative: Manual Deployment
+
+```bash
+npm run build
+npm start
+```
+
+## Project Structure
