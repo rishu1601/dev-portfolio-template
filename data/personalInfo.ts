@@ -1,5 +1,8 @@
 // Personal Information - Fully Anonymized Template for Public Use
 
+/** Employment / education date range. Use `end: 'Present'` for ongoing roles. */
+export type Period = { start: string; end: string }
+
 export const personalInfo = {
   name: 'Alex Developer',
   title: 'Full Stack Engineer | Systems Architect | Problem Solver',
@@ -27,14 +30,14 @@ export const experiences = [
     positions: [
       {
         title: 'Senior Software Engineer',
-        period: '2023 - Present',
+        period: { start: '2023', end: 'Present' },
         description: `- Designed cloud-native backend services handling large-scale data pipelines and analytics workloads.
 - Collaborated with frontend and platform teams to integrate API gateways, caching, and observability.
 - Improved system performance by introducing event-driven architecture and efficient data access patterns.`,
       },
       {
         title: 'Software Engineer',
-        period: '2020 - 2023',
+        period: { start: '2020', end: '2023' },
         description: `- Implemented modular microservices supporting internal APIs and external integrations.
 - Refactored legacy modules to adopt asynchronous I/O and improved request handling throughput.
 - Developed internal libraries for job scheduling and monitoring.`,
@@ -48,7 +51,7 @@ export const experiences = [
     positions: [
       {
         title: 'Software Developer',
-        period: '2018 - 2020',
+        period: { start: '2018', end: '2020' },
         description: `- Built end-to-end web applications with React and Node.js.
 - Automated CI/CD pipelines and container deployments to cloud infrastructure.
 - Integrated external REST and GraphQL APIs to enhance user experience and data flow.`,
@@ -99,7 +102,7 @@ export const education = [
   {
     degree: 'Bachelor of Science in Computer Science',
     institution: 'University of Central City',
-    period: '2014 - 2018',
+    period: { start: '2014', end: '2018' },
     location: 'USA',
   },
 ]
