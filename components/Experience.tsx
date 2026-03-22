@@ -4,7 +4,9 @@ import { motion } from 'framer-motion'
 import { Calendar, MapPin, Building2 } from 'lucide-react'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
-import { experiences } from '@/data/personalInfo'
+import { experiences, type Period } from '@/data/personalInfo'
+
+const formatPeriod = (p: Period) => `${p.start} - ${p.end}`
 
 const Experience = () => {
   return (
@@ -36,10 +38,10 @@ const Experience = () => {
               const firstPosition = companyExp.positions[0]
               const lastPosition = companyExp.positions[companyExp.positions.length - 1]
               
-              let totalPeriod = firstPosition.period
+              let totalPeriod = formatPeriod(firstPosition.period)
               if (companyExp.positions.length > 1) {
-                const lastStartDate = lastPosition.period.split(' - ')[0]
-                const firstEndDate = firstPosition.period.split(' - ')[1] || 'Present'
+                const lastStartDate = lastPosition.period.start
+                const firstEndDate = firstPosition.period.end
                 totalPeriod = `${lastStartDate} - ${firstEndDate}`
               }
 
@@ -109,7 +111,7 @@ const Experience = () => {
                               </h4>
                               <div className="flex items-center gap-1 text-sm text-gray-500">
                                 <Calendar size={14} />
-                                <span>{position.period}</span>
+                                <span>{formatPeriod(position.period)}</span>
                               </div>
                             </div>
 
