@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Mail, Linkedin, Github, MapPin } from 'lucide-react'
-import { personalInfo } from '@/data/personalInfo'
+import { personalInfo } from '@/lib/profile'
 
 const Contact = () => {
   const contactMethods = [

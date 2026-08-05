@@ -3,23 +3,9 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Code } from 'lucide-react'
 import Image from 'next/image'
-import { projects as rawProjects } from '@/data/personalInfo'
-
-// Local Project type (using `type` not `interface`)
-type Project = {
-  title: string
-  description?: string
-  image?: string
-  technologies?: string[]
-  githubUrl?: string
-  liveUrl?: string
-  featured?: boolean
-}
+import { projects } from '@/lib/profile'
 
 const Projects = () => {
-  // Cast the imported projects to the local Project[] type to avoid the `never[]` inference
-  const projects = (rawProjects as unknown) as Project[] | undefined
-
   if (!projects || projects.length === 0) {
     return null
   }

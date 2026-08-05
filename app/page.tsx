@@ -7,12 +7,12 @@ import GithubProfile from '@/components/GithubProfile'
 import Contact from '@/components/Contact'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import { 
-  projects, 
-  githubUsername, 
+import {
+  projects,
+  githubUsername,
   experiences,
-  navigationConfig 
-} from '@/data/personalInfo'
+  navigationConfig
+} from '@/lib/profile'
 
 export default function Home() {
   // Helper function to check if a section should be shown

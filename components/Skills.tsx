@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { skills } from '@/data/personalInfo'
+import { skills } from '@/lib/profile'
 
 const skillCategories = [
   {
