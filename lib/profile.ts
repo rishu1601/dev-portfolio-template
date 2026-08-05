@@ -4,10 +4,10 @@
 import profileData from '@/config/profile.json'
 
 export interface SocialLinks {
-  github?: string
-  linkedin?: string
-  email?: string
-  blog?: string
+  github: string
+  linkedin: string
+  email: string
+  blog: string
 }
 
 export interface PersonalInfo {
