@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Github, ExternalLink, MapPin, Link2 as LinkIcon, Users } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { githubUsername } from '@/data/personalInfo'
+import { githubUsername } from '@/lib/profile'
 
 interface GitHubProfile {
   login: string
@@ -86,7 +86,7 @@ const GithubProfile = () => {
 
           <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
             <p className="text-gray-600 mb-4">
-              Please update your GitHub username in <code className="bg-gray-100 px-2 py-1 rounded">data/personalInfo.ts</code> to view your profile.
+              Please update your GitHub username in <code className="bg-gray-100 px-2 py-1 rounded">config/profile.json</code> to view your profile.
             </p>
             {githubUsername && (
               <a

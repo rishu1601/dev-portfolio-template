@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Calendar, MapPin, Building2 } from 'lucide-react'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
-import { experiences, type Period } from '@/data/personalInfo'
+import { experiences, type Period } from '@/lib/profile'
 
 const formatPeriod = (p: Period) => `${p.start} - ${p.end}`
 

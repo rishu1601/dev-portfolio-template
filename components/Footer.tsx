@@ -1,7 +1,7 @@
 'use client'
 
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
-import { personalInfo } from '@/data/personalInfo'
+import { personalInfo } from '@/lib/profile'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()

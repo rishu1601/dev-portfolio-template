@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { ArrowDown, Github, Linkedin, Mail, Download, PenLine } from 'lucide-react'
 import { motion } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
-import { personalInfo } from '@/data/personalInfo'
+import { personalInfo } from '@/lib/profile'
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false)

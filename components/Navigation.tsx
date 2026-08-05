@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import { Menu, X } from 'lucide-react'
-import { 
-  navigationConfig, 
-  projects, 
+import {
+  navigationConfig,
+  projects,
   githubUsername,
   experiences,
-  personalInfo 
-} from '@/data/personalInfo'
+  personalInfo
+} from '@/lib/profile'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)

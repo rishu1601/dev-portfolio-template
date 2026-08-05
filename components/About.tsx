@@ -1,27 +1,23 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { User, Code, Lightbulb } from 'lucide-react'
-import { personalInfo } from '@/data/personalInfo'
+import { User, Code, Lightbulb, type LucideIcon } from 'lucide-react'
+import { personalInfo, about } from '@/lib/profile'
+
+// Maps the `icon` string stored in config/profile.json to a lucide-react component.
+// Add an entry here when a new icon name is introduced in the config.
+const iconMap: Record<string, LucideIcon> = {
+  Code,
+  Lightbulb,
+  User,
+}
 
 const About = () => {
-  const features = [
-    {
-      icon: Code,
-      title: 'Scalable Systems',
-      description: 'Designing high-throughput, low-latency distributed systems (microservices, messaging, data stores).',
-    },
-    {
-      icon: Lightbulb,
-      title: 'Performance & Reliability',
-      description: 'Optimizing delivery engines, migrations to managed services, and observability to reduce incidents and latency.',
-    },
-    {
-      icon: User,
-      title: 'Mentoring & Collaboration',
-      description: 'Leading cross-functional work, mentoring engineers, and building reusable frameworks adopted by multiple teams.',
-    },
-  ]
+  const features = about.highlights.map((highlight) => ({
+    icon: iconMap[highlight.icon] ?? Code,
+    title: highlight.title,
+    description: highlight.description,
+  }))
 
   return (
     <section
@@ -57,7 +53,7 @@ const About = () => {
                 {personalInfo.bio}
               </p>
               <p className="text-sm text-gray-500">
-                Core strengths: system design, distributed systems, observability, and building resilient microservices for high throughput. Experienced in Java, Spring Boot, Reactive Java, Apache Pulsar, Cassandra and production migrations to managed services.
+                {about.coreStrengths}
               </p>
             </div>
           </motion.div>
@@ -69,11 +65,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-3 gap-4"
           >
-            {[
-              { label: 'Projects', value: '10+' },
-              { label: 'Technologies', value: '15+' },
-              { label: 'Experience', value: '6+ Years' },
-            ].map((stat, index) => (
+            {about.stats.map((stat, index) => (
               <div
                 key={index}
                 className="bg-gradient-to-br from-primary-500 to-purple-600 rounded-xl p-6 text-center text-white shadow-lg transform hover:scale-105 transition-transform"
