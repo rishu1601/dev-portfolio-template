@@ -10,7 +10,7 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 - 🎯 **Recruiter Friendly** - Clear sections for experience, skills, and GitHub profile
 - ✨ **Smooth Animations** - Engaging animations using Framer Motion
 - 🚀 **Easy Deployment** - Ready to deploy on Vercel with zero configuration
-- ⚙️ **Fully Configurable** - Single configuration file controls everything
+- ⚙️ **Fully Configurable** - Single JSON config file controls everything
 
 ## Tech Stack
 
@@ -58,95 +58,137 @@ pnpm dev
 
 ## Quick Customization
 
-**All customization happens in `data/personalInfo.ts`** - Update this single file with your information:
+**All customization happens in `config/profile.json`** - Update this single file with your information. It's typed and validated through [lib/profile.ts](lib/profile.ts), so components always get well-shaped data.
 
 ### 1. Personal Information
-```typescript
-export const personalInfo = {
-  name: 'Your Name',
-  title: 'Your Title',
-  bio: 'Your bio...',
-  socialLinks: {
-    github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourprofile',
-    email: 'your.email@example.com',
-  },
-  location: 'Your City, Country',
-  resume: {
-    filename: 'YourResume.pdf',
-    displayName: 'YourResume.pdf',
-  },
+```json
+{
+  "personalInfo": {
+    "name": "Your Name",
+    "title": "Your Title",
+    "bio": "Your bio... (supports markdown)",
+    "socialLinks": {
+      "github": "https://github.com/yourusername",
+      "linkedin": "https://linkedin.com/in/yourprofile",
+      "email": "your.email@example.com",
+      "blog": ""
+    },
+    "location": "Your City, Country",
+    "resume": {
+      "filename": "YourResume.pdf",
+      "displayName": "YourResume.pdf"
+    }
+  }
 }
 ```
 
-### 2. Work Experience
-```typescript
-export const experiences = [
-  {
-    company: 'Company Name',
-    logo: '/logos/company-logo.png', // Optional
-    location: 'City, Country',
-    positions: [
-      {
-        title: 'Senior Software Engineer',
-        period: '2023 - Present',
-        description: `#### Project Name
-- Achievement 1
-- Achievement 2
-- Achievement 3`,
-      },
-      // Add more positions for promotions
+### 2. About Section
+```json
+{
+  "about": {
+    "coreStrengths": "A short paragraph on what you're strongest at.",
+    "stats": [
+      { "label": "Projects", "value": "10+" },
+      { "label": "Technologies", "value": "15+" },
+      { "label": "Experience", "value": "6+ Years" }
     ],
-  },
-  // Add more companies
-]
+    "highlights": [
+      { "icon": "Code", "title": "Scalable Systems", "description": "..." }
+    ]
+  }
+}
 ```
+`highlights[].icon` is a name from lucide-react (e.g. `Code`, `Lightbulb`, `User`) — it must have a matching entry in the `iconMap` in [components/About.tsx](components/About.tsx).
 
-### 3. Skills
-```typescript
-export const skills = {
-  frontend: ['React', 'Next.js', 'TypeScript'],
-  backend: ['Java', 'Spring Boot', 'Python'],
-  ai: ['GPT Integration', 'LLM APIs', 'Prompt Engineering'],
-  tools: ['Git', 'Docker', 'AWS', 'Kubernetes'],
+### 3. Work Experience
+```json
+{
+  "experiences": [
+    {
+      "company": "Company Name",
+      "logo": "/logos/company-logo.png",
+      "location": "City, Country",
+      "positions": [
+        {
+          "title": "Senior Software Engineer",
+          "period": { "start": "2023", "end": "Present" },
+          "description": "#### Project Name\n- Achievement 1\n- Achievement 2\n- Achievement 3"
+        }
+      ]
+    }
+  ]
+}
+```
+`period.end` can be `"Present"` for ongoing roles. `logo` is optional — omit or set to `null` to fall back to a placeholder icon.
+
+### 4. Skills
+```json
+{
+  "skills": {
+    "frontend": ["React", "Next.js", "TypeScript"],
+    "backend": ["Java", "Spring Boot", "Python"],
+    "ai": ["GPT Integration", "LLM APIs", "Prompt Engineering"],
+    "tools": ["Git", "Docker", "AWS", "Kubernetes"]
+  }
 }
 ```
 
-### 4. GitHub Profile
-```typescript
-export const githubUsername = 'your-github-username'
-```
-
-### 5. Projects (Optional)
-```typescript
-export const projects = [
-  {
-    title: 'Project Name',
-    description: 'Project description',
-    image: '/images/project.png', // Optional
-    technologies: ['React', 'Next.js'],
-    githubUrl: 'https://github.com/username/project', // Optional
-    liveUrl: 'https://project-demo.com', // Optional
-    featured: true, // Optional
-  },
-]
-```
-
-### 6. Navigation Configuration
-```typescript
-export const navigationConfig = {
-  order: ['home', 'about', 'experience', 'projects', 'skills', 'github', 'contact'],
-  labels: {
-    home: 'Home',
-    about: 'About',
-    experience: 'Experience',
-    projects: 'Projects',
-    skills: 'Skills',
-    github: 'GitHub',
-    contact: 'Contact',
-  },
+### 5. Education
+```json
+{
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "University Name",
+      "period": { "start": "2014", "end": "2018" },
+      "location": "USA"
+    }
+  ]
 }
 ```
+
+### 6. GitHub Profile
+```json
+{
+  "githubUsername": "your-github-username"
+}
+```
+
+### 7. Projects (Optional)
+```json
+{
+  "projects": [
+    {
+      "title": "Project Name",
+      "description": "Project description",
+      "image": "/images/project.png",
+      "technologies": ["React", "Next.js"],
+      "githubUrl": "https://github.com/username/project",
+      "liveUrl": "https://project-demo.com",
+      "featured": true
+    }
+  ]
+}
+```
+
+### 8. Navigation Configuration
+```json
+{
+  "navigationConfig": {
+    "order": ["home", "about", "experience", "projects", "skills", "github", "contact"],
+    "labels": {
+      "home": "Home",
+      "about": "About",
+      "experience": "Experience",
+      "projects": "Projects",
+      "skills": "Skills",
+      "github": "GitHub",
+      "contact": "Contact"
+    }
+  }
+}
+```
+Sections without data (e.g. no `projects`, no `githubUsername`) are automatically hidden from both the nav and the page.
 
 ## Assets
 
@@ -172,3 +214,19 @@ npm start
 ```
 
 ## Project Structure
+
+```
+├── app/
+│   ├── layout.tsx        # Root layout, page metadata from config/profile.json
+│   └── page.tsx          # Section ordering/visibility
+├── components/           # One component per section (Hero, About, Experience, ...)
+├── config/
+│   └── profile.json      # Single source of truth for all profile content
+├── lib/
+│   └── profile.ts        # TypeScript types + typed accessors for profile.json
+└── public/
+    ├── logos/             # Company logos referenced by experiences[].logo
+    └── *.pdf              # Resume file referenced by personalInfo.resume.filename
+```
+
+See [AGENTS.md](AGENTS.md) for the full data model and extension points (adding new sections, icons, or fields).
