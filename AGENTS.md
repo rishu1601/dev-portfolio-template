@@ -69,6 +69,13 @@ component in `app/page.tsx`.
   classes) — this is a template's look and feel, not profile content.
 - Component structure/abstractions beyond what a new field requires.
 
+## Making a change via Claude Code
+
+If you're using Claude Code in this repo, `/update-portfolio <what you want
+changed>` (see [.claude/commands/update-portfolio.md](.claude/commands/update-portfolio.md))
+runs the edit → build-verify → optional commit/push/redeploy flow described
+below as one guided command, instead of doing it ad hoc.
+
 ## Verifying a change
 
 ```bash
