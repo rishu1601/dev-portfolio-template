@@ -190,6 +190,13 @@ pnpm dev
 ```
 Sections without data (e.g. no `projects`, no `githubUsername`) are automatically hidden from both the nav and the page.
 
+### Editing later with Claude Code
+
+If you have [Claude Code](https://claude.com/claude-code) open in this repo,
+run `/update-portfolio <what you want changed>` (e.g. `/update-portfolio add
+my job at Acme Corp from 2022 to now`) — it edits `config/profile.json`,
+verifies the build, and asks before committing, pushing, or redeploying.
+
 ## Assets
 
 Place your files in the `public` folder:
